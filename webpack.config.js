@@ -6,7 +6,7 @@ var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom'];
 
 var config = {
   entry: {
-    bundle: './src/index.js',
+    bundle: './src/index.jsx',
     vendor: VENDOR_LIBS,
   },
   output: {
@@ -18,7 +18,7 @@ var config = {
       {
         use: 'babel-loader',
         exclude: /node_modules/,
-        test: /\.js$/,
+        test: /\.jsx$/,
       }
     ]
   },
@@ -31,7 +31,10 @@ var config = {
       filename: 'index.html',
       template: './src/index.html',
     })
-  ]
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 }
 
 module.exports = config;
