@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var VENDOR_LIBS = ['react', 'react-dom'];
+var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom'];
 
 var config = {
   entry: {
