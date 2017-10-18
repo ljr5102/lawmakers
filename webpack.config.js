@@ -1,8 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'immutable'];
+var extractSass = new ExtractTextPlugin({
+  filename: '[name][chunkhash].css',
+});
 
 var config = {
   entry: {
@@ -19,6 +23,17 @@ var config = {
         use: 'babel-loader',
         exclude: /node_modules/,
         test: /\.jsx?$/,
+      },
+      {
+        use: extractSass.extract({
+          use: [{
+            loader: 'css-loader',
+          }, {
+            loader: 'sass-loader',
+          }],
+          fallback: 'style-loader',
+        }),
+        test: /\.scss$/,
       }
     ]
   },
@@ -33,7 +48,8 @@ var config = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    })
+    }),
+    extractSass,
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
