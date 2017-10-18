@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom'];
+var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'immutable'];
 
 var config = {
   entry: {
@@ -18,7 +18,7 @@ var config = {
       {
         use: 'babel-loader',
         exclude: /node_modules/,
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
       }
     ]
   },
@@ -30,6 +30,9 @@ var config = {
       title: 'My App',
       filename: 'index.html',
       template: './src/index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     })
   ],
   resolve: {
