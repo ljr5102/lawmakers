@@ -1,0 +1,61 @@
+html, body, div, span, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+ol, ul {
+  list-style: none;
+}
+
+$base-color:  #0DA0C9;
+$second-blue: #75ACBC;
+$third-blue: #548C9C;
+$secondary-color: #FF8508;
+
+body {
+  background-color: lightgray;
+  font-family: sans-serif;
+}
+
+.app-page {
+  background-color: $base-color;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  box-shadow: 0px 0px 2px 2px #989898;
+}
+
+.app-rows {
+  background-color: $base-color;
+  .top {
+    height: 33%;
+  }
+  .middle {
+    height: 34%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bottom {
+    height: 33%;
+  }
+}
+
+.app-enter {
+  margin: auto;
+  display: block;
+  background-color: $base-color;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  &:hover {
+    background-color: $third-blue;
+  }
+}
