@@ -34,6 +34,15 @@ var config = {
           fallback: 'style-loader',
         }),
         test: /\.scss$/,
+      },
+      {
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          }
+        ],
+        test: /\.(jpe?g|png|gif|svg)$/,
       }
     ]
   },
