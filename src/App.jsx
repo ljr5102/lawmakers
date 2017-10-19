@@ -18,11 +18,15 @@ const LandingPage = () => (
   <div>
     <div className="app-page">
       <div className="app-rows">
-        <div className="top"></div>
+        <div className="top">
+          <span className="app-thinking" role="img" aria-label="ThinkingFace">🤔</span>
+        </div>
         <div className="middle">
           <button className="app-enter">Enter Site Here!</button>
           </div>
-        <div className="bottom"></div>
+        <div className="bottom">
+          <div className="app-capitol"></div>
+        </div>
       </div>
     </div>
   </div>
