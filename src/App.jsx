@@ -19,13 +19,16 @@ const LandingPage = () => (
     <div className="app-page">
       <div className="app-rows">
         <div className="top">
-          <span className="app-thinking" role="img" aria-label="ThinkingFace">🤔</span>
+          <div className="welcome-text">Welcome to Find Your Rep!</div>
         </div>
         <div className="middle">
-          <button className="app-enter">Enter Site Here!</button>
-          </div>
-        <div className="bottom">
           <div className="app-capitol"></div>
+        </div>
+        <div className="bottom">
+          <div style={{ width: '75%', margin: 'auto', display: 'block', minWidth: 930, textAlign: 'center' }}>
+            <div className="app-enter-info">Find Your Rep answers these questions and more. Enter now!</div>
+            <button className="app-enter">GO! <span>➡</span></button>
+          </div>
         </div>
       </div>
     </div>
