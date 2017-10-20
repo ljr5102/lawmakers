@@ -1,6 +1,7 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import './Styles/App.scss';
+import LandingPage from './Components/LandingPage/index';
 
 const Dashboard = () => (
   <div>Dashboard!!</div>
@@ -14,35 +15,13 @@ const Dashboard = () => (
 //   });
 // };
 
-const LandingPage = () => (
-  <div>
-    <div className="app-page">
-      <div className="app-rows">
-        <div className="top">
-          <div className="welcome-text">Welcome to Find Your Rep!</div>
-        </div>
-        <div className="middle">
-          <div className="app-capitol"></div>
-        </div>
-        <div className="bottom">
-          <div style={{ width: '75%', margin: 'auto', display: 'block', minWidth: 930, textAlign: 'center' }}>
-            <div className="app-enter-info">Find Your Rep answers these questions and more. Enter now!</div>
-            <button className="app-enter">GO! <span>➡</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 const App = () => (
   <Router>
     <div>
-      <LandingPage />
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/dashboard" component={Dashboard} />
     </div>
   </Router>
 );
-// <Link to="/dashboard">Dashboard</Link>
-// <Route exact path="/dashboard" component={Dashboard} />
 
 export default App;

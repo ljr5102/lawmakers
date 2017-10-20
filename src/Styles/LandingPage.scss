@@ -1,0 +1,75 @@
+$base-color:  #0560d2;
+$secondary-color: #bf0900;
+
+.lp-page {
+  background-color: $base-color;
+  min-height: 100vh;
+
+  .lp-rows {
+    .top {
+      padding: 20px;
+
+      .welcome-text {
+        text-align: center;
+        color: white;
+        font-size: 40px;
+        background: #42b9e6;
+        width: 80%;
+        margin: auto;
+        padding: 5px;
+        border: 2px solid white;
+        border-radius: 22px;
+      }
+    }
+    .middle {
+      padding: 20px;
+
+      .lp-capitol {
+        background-image: url('../../assets/capitol.png');
+        width: 600px;
+        height: 380px;
+        margin: auto;
+      }
+    }
+    .bottom {
+      padding: 20px;
+
+      .lp-enter-group {
+        width: 75%;
+        margin: auto;
+        display: block;
+        min-width: 930px;
+        text-align: center;
+
+        .lp-enter-info {
+          text-align: center;
+          display: inline-block;
+          color: white;
+          font-size: 26px;
+          padding: 10px;
+        }
+
+        .lp-enter {
+          margin: auto;
+          background-color: $secondary-color;
+          color: white;
+          font-weight: bold;
+          padding: 10px;
+          border: 2px solid white;
+          border-radius: 10px;
+          font-size: 30px;
+          cursor: pointer;
+          &:hover {
+            background-color: #2dff2d;
+            span {
+              color: white;
+            }
+          }
+          span {
+            color: #2dff2d;
+          }
+        }
+      }
+    }
+  }
+}
