@@ -1,5 +1,4 @@
-$base-color:  #0560d2;
-$secondary-color: #bf0900;
+@import 'colors.scss';
 
 .lp-page {
   background-color: $base-color;
@@ -60,13 +59,13 @@ $secondary-color: #bf0900;
           font-size: 30px;
           cursor: pointer;
           &:hover {
-            background-color: #2dff2d;
+            background-color: $active;
             span {
               color: white;
             }
           }
           span {
-            color: #2dff2d;
+            color: $active;
           }
         }
       }

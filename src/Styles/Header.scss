@@ -1,0 +1,47 @@
+@import 'colors.scss';
+
+.h-group {
+  $left-percent: 30%;
+  $right-percent: 100% - $left-percent;
+  background-color: $secondary-color;
+  color: white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+
+  .h-left {
+    display: inline-block;
+    width: $left-percent;
+
+    .h-title {
+      width: 60%;
+      font-size: 32px;
+      padding: 10px;
+      text-align: center;
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+      &:hover {
+        background-color: $active;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .h-right {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: $right-percent;
+    div {
+      &:nth-child(1) {
+        border-left: 1px solid white;
+      }
+      border-right: 1px solid white;
+      display: inline-block;
+      padding: 10px;
+      font-size: 32px;
+      &:hover {
+        background-color: $active;
+        cursor: pointer;
+      }
+    }
+  }
+}
