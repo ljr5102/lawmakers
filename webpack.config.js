@@ -10,7 +10,7 @@ var extractSass = new ExtractTextPlugin({
 
 var config = {
   entry: {
-    bundle: './src/index.jsx',
+    bundle: './src/index.js',
     vendor: VENDOR_LIBS,
   },
   output: {
