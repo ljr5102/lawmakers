@@ -1,7 +1,5 @@
-import myReducer from './base-one';
-import secondReducer from './base-two';
+import congressmen from './congressmen';
 
 export default {
-  myReducer,
-  secondReducer,
+  congressmen,
 };
