@@ -1,23 +1,10 @@
-const fetchingCongressmenRequest = () => ({
-  type: 'GET_CONGRESSMEN_REQUEST',
-});
+import { fetchCongress } from '../Utils';
 
-const getCongressmenSuccess = congressmen => ({
-  type: 'GET_CONGRESSMEN_SUCCESS',
-  congressmen,
-});
-
-const getCongressmenFailure = () => ({
-  type: 'GET_CONGRESSMEN_FAILURE',
-});
-
-const fetchingCongressmenEnd = () => ({
-  type: 'GET_CONGRESSMEN_END',
+const getCongressmen = () => ({
+  type: 'GET_CONGRESSMEN',
+  promise: fetchCongress,
 });
 
 export {
-  fetchingCongressmenRequest,
-  getCongressmenSuccess,
-  getCongressmenFailure,
-  fetchingCongressmenEnd,
+  getCongressmen,
 };
