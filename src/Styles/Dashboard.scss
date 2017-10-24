@@ -5,14 +5,19 @@
     background-color: $base-color;
     min-height: 100vh;
     width: 80%;
+    min-width: 1024px;
     margin: auto;
     box-shadow: 0px 0px 10px 2px;
   }
 }
 
+.cl-group {
+  display: flex;
+  justify-content: space-evenly;
+  width: 95%;
+  margin: auto;
+}
+
 .ct-group {
-  display: inline-block;
-  border: 8px solid white;
-  width: 243px;
   box-sizing: border-box;
 }
