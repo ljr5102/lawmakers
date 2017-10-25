@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List } from 'immutable';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import { Map } from 'immutable';
+import { chunk } from '../../Utils';
 import CongressionalTile from './CongressionalTile';
 
 class CongressionalList extends React.Component {
@@ -10,13 +12,7 @@ class CongressionalList extends React.Component {
 
   chunkMembers() {
     const list = this.props.congressmen.get('list');
-    return list.reduce((x, y) => {
-      if (x.get(-1).size === 4) {
-        return x.push(List([y]));
-      }
-      const thing = x.get(-1).push(y);
-      return x.set(-1, thing);
-    }, List([List([])]));
+    return chunk(list, 4);
   }
 
   renderChunks() {
@@ -38,6 +34,11 @@ class CongressionalList extends React.Component {
 
 CongressionalList.propTypes = {
   load: PropTypes.func.isRequired,
+  congressmen: ImmutablePropTypes.map,
+};
+
+CongressionalList.defaultProps = {
+  congressmen: Map({}),
 };
 
 export default CongressionalList;
