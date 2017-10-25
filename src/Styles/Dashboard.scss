@@ -2,7 +2,7 @@
 
 .db {
   .db-group {
-    background-color: $base-color;
+    background-color: #858688;
     min-height: 100vh;
     width: 80%;
     min-width: 1024px;
@@ -19,5 +19,20 @@
 }
 
 .ct-group {
+  width: 229px;
+  margin-top: 10px;
+  border: 2px solid white;
   box-sizing: border-box;
+  // box-sizing: border-box;
+  .ct-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    border-top: 2px solid white;
+    box-sizing: border-box;
+  }
 }

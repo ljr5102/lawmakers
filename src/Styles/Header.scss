@@ -1,11 +1,12 @@
 @import 'colors.scss';
 
 .h-group {
+  height: 51px;
+  padding-top: 5px;
   $left-percent: 30%;
   $right-percent: 100% - $left-percent;
   background-color: $secondary-color;
   color: white;
-  border-top: 1px solid white;
   border-bottom: 1px solid white;
 
   .h-left {
@@ -14,11 +15,14 @@
 
     .h-title {
       width: 60%;
-      font-size: 32px;
+      margin-left: 36px;
+      font-size: 26px;
       padding: 10px;
       text-align: center;
-      border-left: 1px solid white;
-      border-right: 1px solid white;
+      background-color: #858688;
+      border-radius: 10px 10px 0px 0px;
+      border: 1px solid white;
+      border-bottom: none;
       &:hover {
         background-color: $active;
         cursor: pointer;
@@ -31,13 +35,9 @@
     justify-content: flex-end;
     width: $right-percent;
     div {
-      &:nth-child(1) {
-        border-left: 1px solid white;
-      }
-      border-right: 1px solid white;
       display: inline-block;
       padding: 10px;
-      font-size: 32px;
+      font-size: 26px;
       &:hover {
         background-color: $active;
         cursor: pointer;
