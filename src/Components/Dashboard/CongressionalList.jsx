@@ -20,10 +20,10 @@ class CongressionalList extends React.Component {
   }
 
   renderChunks() {
-    return this.chunkMembers().map(grp => (
-      <div className="cl-group">
+    return this.chunkMembers().map((grp, idx) => (
+      <div key={idx} className="cl-group">
         {grp.map(tile => (
-          <CongressionalTile person={tile} />
+          <CongressionalTile key={tile.get('id')} person={tile} />
         ))}
       </div>
     ));
