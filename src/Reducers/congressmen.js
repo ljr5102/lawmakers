@@ -11,8 +11,9 @@ const APIHandling = {
   onSuccess: (state, { payload }) => (state.set('list', payload.map(cong => Map({
     id: pickIdData(cong, 'bioguide'),
     name: pickNameData(cong, 'official_full'),
+    last_name: pickNameData(cong, 'last'),
     party: pickTermData(cong, 'party'),
-  })))),
+  })).sortBy(cong => cong.get('last_name')))),
 };
 
 const congressmen = (state = initialState, action) => {
