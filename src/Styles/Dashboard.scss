@@ -23,7 +23,20 @@
   margin-top: 10px;
   border: 2px solid white;
   box-sizing: border-box;
-  // box-sizing: border-box;
+
+  &:hover {
+    border-color: $active;
+    .ct-name {
+      border-color: $active;
+    }
+  }
+
+  img {
+    width: 225px;
+    height: 275px;
+    margin: auto;
+  }
+
   .ct-name {
     display: flex;
     justify-content: center;
@@ -34,5 +47,11 @@
     font-size: 18px;
     border-top: 2px solid white;
     box-sizing: border-box;
+    &.republican {
+      background-color: $secondary-color;
+    }
+    &.democrat {
+      background-color: $base-color;
+    }
   }
 }
