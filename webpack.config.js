@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'immutable'];
+var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'immutable', 'prop-types', 'redux-pack'];
 var extractSass = new ExtractTextPlugin({
   filename: '[name][chunkhash].css',
 });
