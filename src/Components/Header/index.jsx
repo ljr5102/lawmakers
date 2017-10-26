@@ -1,15 +1,16 @@
 import React from 'react';
+import ActionableTab from './ActionableTab';
 import '../../Styles/Header.scss';
 
 const Header = () => (
   <div className="h-group">
     <div className="h-left">
-      <div className="h-title">Dashboard</div>
+      <ActionableTab label="Dashboard" />
     </div>
     <div className="h-right">
-      <div>States</div>
-      <div>Party</div>
-      <div>Committees</div>
+      <ActionableTab label="States" />
+      <ActionableTab label="Party" />
+      <ActionableTab label="Committees" />
     </div>
   </div>
 );
