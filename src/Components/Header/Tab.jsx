@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Tab = ({ label, handleClick }) => (
+const Tab = ({ label, handleClick, active }) => (
   <div
+    className={active === label ? 'active' : ''}
     role="tab"
     onClick={() => handleClick(label)}
     onKeyPress={() => handleClick(label)}
@@ -15,6 +16,7 @@ const Tab = ({ label, handleClick }) => (
 Tab.propTypes = {
   label: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
+  active: PropTypes.string.isRequired,
 };
 
 export default Tab;
