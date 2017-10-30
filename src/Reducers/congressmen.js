@@ -1,6 +1,6 @@
 import { List, Map } from 'immutable';
 import { handle } from 'redux-pack';
-import { pickIdData, pickNameData, pickTermData } from '../Utils';
+import { pickIdData, pickNameData, pickTermData, pickBioData } from '../Utils';
 
 const initialState = Map({ isLoading: false, error: null, list: List([]) });
 
@@ -12,6 +12,8 @@ const APIHandling = {
     id: pickIdData(cong, 'bioguide'),
     name: pickNameData(cong, 'official_full'),
     last_name: pickNameData(cong, 'last'),
+    birthday: pickBioData(cong, 'birthday'),
+    religion: pickBioData(cong, 'religion'),
     party: pickTermData(cong, 'party'),
   })).sortBy(cong => cong.get('last_name')))),
 };

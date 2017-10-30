@@ -13,12 +13,26 @@ class MemberDisplay extends React.Component {
           {member.get('name')}
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          <div>
-            Other biographical data
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ padding: 5, fontSize: 22, color: 'white', fontWeight: 'bold', textDecoration: 'underline' }}>
+              Biographical Data:
+            </div>
+            <div style={{ padding: 5, fontSize: 20, color: 'white' }}>
+              DOB: {member.get('birthday')}
+            </div>
+            <div style={{ padding: 5, fontSize: 20, color: 'white' }}>
+              Religion: {member.get('religion')}
+            </div>
+            <div style={{ padding: 5, fontSize: 20, color: 'white' }}>
+              Party: {member.get('party')}
+            </div>
           </div>
-          <div>
+          <div style={{ border: '1px solid white' }}>
             <img style={{ width: 450, height: 550 }} alt="text" src={`https://theunitedstates.io/images/congress/450x550/${member.get('id')}.jpg`} />
           </div>
+        </div>
+        <div>
+          Term Data
         </div>
       </div>
     ) : (
