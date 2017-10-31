@@ -15,6 +15,9 @@ const APIHandling = {
     birthday: pickBioData(cong, 'birthday'),
     religion: pickBioData(cong, 'religion'),
     party: pickTermData(cong, 'party'),
+    chamber: pickTermData(cong, 'type'),
+    state: pickTermData(cong, 'state'),
+    district: pickTermData(cong, 'district'),
   })).sortBy(cong => cong.get('last_name')))),
 };
 
