@@ -12,27 +12,44 @@ class MemberDisplay extends React.Component {
         <div className="mem-top">
           {member.get('name')}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ padding: 5, fontSize: 22, color: 'white', fontWeight: 'bold', textDecoration: 'underline' }}>
-              Biographical Data:
+        <div className="mem-mid">
+          <div className="mem-mid-left">
+            <div>
+              <div className="header">
+                Biographical Data:
+              </div>
+              <div className="data">
+                <div>
+                  DOB: {member.get('birthday')}
+                </div>
+                <div>
+                  Religion: {member.get('religion') || 'N/A'}
+                </div>
+              </div>
             </div>
-            <div style={{ padding: 5, fontSize: 20, color: 'white' }}>
-              DOB: {member.get('birthday')}
-            </div>
-            <div style={{ padding: 5, fontSize: 20, color: 'white' }}>
-              Religion: {member.get('religion')}
-            </div>
-            <div style={{ padding: 5, fontSize: 20, color: 'white' }}>
-              Party: {member.get('party')}
+            <div>
+              <div className="header">
+                Congressional Data:
+              </div>
+              <div className="data">
+                <div>
+                  Chamber: {member.get('chamber') === 'rep' ? 'House of Representatives' : 'Senate'}
+                </div>
+                <div>
+                  State: {member.get('state')}
+                </div>
+                <div>
+                  District: {member.get('district')}
+                </div>
+                <div>
+                  Party: {member.get('party')}
+                </div>
+              </div>
             </div>
           </div>
-          <div style={{ border: '1px solid white' }}>
-            <img style={{ width: 450, height: 550 }} alt="text" src={`https://theunitedstates.io/images/congress/450x550/${member.get('id')}.jpg`} />
+          <div className="mem-mid-right">
+            <img alt="text" src={`https://theunitedstates.io/images/congress/450x550/${member.get('id')}.jpg`} />
           </div>
-        </div>
-        <div>
-          Term Data
         </div>
       </div>
     ) : (

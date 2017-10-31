@@ -16,6 +16,46 @@
         color: white;
         padding: 10px;
       }
+
+      .mem-mid {
+        display: flex;
+        justify-content: space-around;
+
+        .mem-mid-left {
+          display: flex;
+          flex-direction: column;
+          background-color: lightgray;
+          border: 1px solid white;
+          border-radius: 5px;
+
+           .header {
+             padding: 15;
+             font-size: 22;
+             color: black;
+             font-weight: bold;
+             text-decoration: underline;
+           }
+
+           .data {
+             div {
+               padding: 15;
+               font-size: 20;
+               color: black;
+             }
+           }
+        }
+
+        .mem-mid-right {
+          border: 1px solid white;
+          border-radius: 5px;
+
+          img {
+            border-radius: 5px;
+            width: 450;
+            height: 550;
+          }
+        }
+      }
     }
   }
 }
