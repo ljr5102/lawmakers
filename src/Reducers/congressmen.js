@@ -18,6 +18,7 @@ const APIHandling = {
     chamber: pickTermData(cong, 'type'),
     state: pickTermData(cong, 'state'),
     district: pickTermData(cong, 'district'),
+    terms: cong.get('terms'),
   })).sortBy(cong => cong.get('last_name')))),
 };
 
