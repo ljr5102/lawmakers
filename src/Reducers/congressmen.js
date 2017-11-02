@@ -18,6 +18,14 @@ const APIHandling = {
     chamber: pickTermData(cong, 'type'),
     state: pickTermData(cong, 'state'),
     district: pickTermData(cong, 'district'),
+    contactInfo: Map({
+      url: pickTermData(cong, 'url'),
+      address: pickTermData(cong, 'address'),
+      phone: pickTermData(cong, 'phone'),
+      fax: pickTermData(cong, 'fax'),
+      contactForm: pickTermData(cong, 'contact_form'),
+      office: pickTermData(cong, 'office'),
+    }),
     terms: cong.get('terms'),
   })).sortBy(cong => cong.get('last_name')))),
 };
