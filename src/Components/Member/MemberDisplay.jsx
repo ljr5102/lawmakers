@@ -26,7 +26,7 @@ class MemberDisplay extends React.Component {
               </div>
               <div className="data">
                 <div>
-                  DOB: {member.get('birthday')}
+                  DOB: {new Date(member.get('birthday')).toLocaleDateString()}
                 </div>
                 <div>
                   Religion: {member.get('religion') || 'N/A'}
@@ -72,8 +72,8 @@ class MemberDisplay extends React.Component {
                 </tr>
                 {member.get('terms').map((term, idx) => (
                   <tr key={idx}>
-                    <td>{term.get('start')}</td>
-                    <td>{term.get('end')}</td>
+                    <td>{new Date(term.get('start')).toLocaleDateString()}</td>
+                    <td>{new Date(term.get('end')).toLocaleDateString()}</td>
                     <td>{term.get('type').toUpperCase()}</td>
                     <td>{term.get('party')}</td>
                     <td>{term.get('state')}</td>
@@ -82,6 +82,23 @@ class MemberDisplay extends React.Component {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+        <div className="mem-low">
+          <div className="header">Contact This Congressman</div>
+          <div className="data">
+            <div>
+              <h2>By Mail</h2>
+              <div>{member.getIn(['contactInfo', 'address'])}</div>
+            </div>
+            <div>
+              <h2>By Phone</h2>
+              <div>{member.getIn(['contactInfo', 'phone'])}</div>
+            </div>
+            <div>
+              <h2>Visit Website</h2>
+              <a href={member.getIn(['contactInfo', 'url'])}>{member.getIn(['contactInfo', 'url'])}</a>
+            </div>
           </div>
         </div>
       </div>
