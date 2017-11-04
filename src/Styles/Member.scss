@@ -25,6 +25,18 @@
         .mem-mid-left {
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          .california {
+            width: 289px;
+            height: 500px;
+            background-image: url('../../assets/CA-California.png');
+            &.red {
+              background-image: url('../../assets/CA-California-blue.png');
+            }
+            &.blue {
+              background-image: url('../../assets/CA-California-blue.png');
+            }
+          }
           // background-color: lightgray;
           // border: 1px solid white;
           // border-radius: 5px;
