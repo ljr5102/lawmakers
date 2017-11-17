@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HeaderLinks from './HeaderLinks';
-import Biographical from './Biographical';
+import MemberBio from './MemberBio';
 import Historical from './Historical';
 import Contact from './Contact';
 
@@ -18,7 +18,7 @@ class MemberDisplay extends React.Component {
         <div className="mem-top">
           {member.get('name')}
         </div>
-        <Biographical member={member} />
+        <MemberBio member={member} />
         <Historical member={member} />
         <Contact member={member} />
       </div>

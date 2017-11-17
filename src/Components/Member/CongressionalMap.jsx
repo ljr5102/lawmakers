@@ -2,6 +2,7 @@ import React from 'react';
 
 class CongressionalMap extends React.Component {
   componentDidMount() {
+    const { lat, lng, zoom, code } = this.props;
     const isMobile = (navigator.userAgent.toLowerCase().indexOf('android') > -1) ||
       (navigator.userAgent.match(/(iPod|iPhone|iPad|BlackBerry|Windows Phone|iemobile)/));
     if (isMobile) {
@@ -13,8 +14,8 @@ class CongressionalMap extends React.Component {
     mapDiv.style.height = isMobile ? '100%' : '300px';
     const map = new google.maps.Map(mapDiv, {
       // -98.998661 lng, 38.4981225 lat
-      center: new google.maps.LatLng(38.4981225, -98.998661),
-      zoom: this.props.zoom,
+      center: new google.maps.LatLng(lat, lng),
+      zoom: zoom,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     });
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend-open'));
@@ -26,7 +27,7 @@ class CongressionalMap extends React.Component {
       query: {
         select: 'col4',
         from: '1lnXJhKK1dX3dbzyq6S0gok4F44QpImPrqP4cd-Lk',
-        where: 'col2 \x3d \x27KS-01\x27',
+        where: `col2 \x3d \x27${code}\x27`,
       },
       options: {
         styleId: 2,
