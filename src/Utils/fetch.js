@@ -11,7 +11,7 @@ const fetchMapDataAPI = (code) => {
   const rowFetchSql = `SELECT ROWID, geometry from 1lnXJhKK1dX3dbzyq6S0gok4F44QpImPrqP4cd-Lk where Code = '${code}';`;
   const param = `query?sql=${rowFetchSql}`;
   const googApiKey = '&key=AIzaSyD8SMlcDgmqT3zUusiEpCZFKB4E0N9SiOk';
-  return fetch(fusionAPILink + param + googApiKey, { method: 'GET', 'Content-Type': 'application/json' })
+  return fetch(fusionAPILink + param + googApiKey, { method: 'GET', 'Content-Type': 'application/json' });
 };
 
 const fetchCongress = () => fetchCongressAPI().then(
