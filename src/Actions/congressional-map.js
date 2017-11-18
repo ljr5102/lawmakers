@@ -5,6 +5,11 @@ const getMemberMapData = code => ({
   promise: fetchMapData(code),
 });
 
+const clearMapData = () => ({
+  type: 'CLEAR_MAP_DATA',
+});
+
 export {
   getMemberMapData,
+  clearMapData,
 };
