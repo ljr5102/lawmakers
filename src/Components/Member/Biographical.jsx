@@ -7,21 +7,54 @@ const chamber = Map({
   sen: 'Senate',
 });
 
+const convertDistrict = (dist) => {
+  if (dist === undefined) {
+    return null;
+  } else if (dist === 0) {
+    return 'AL';
+  } else if (dist.toString().length < 2) {
+    return `0${dist}`;
+  }
+  return dist.toString();
+};
+
 class Biographical extends React.Component {
   constructor() {
     super();
   }
 
+
   componentWillMount() {
     const { member, load } = this.props;
-    if (member.get('district')) {
-      load(`${member.get('state')}-${member.get('district').toString()}`);
+    const district = convertDistrict(member.get('district'));
+    const notState = ['AS', 'DC', 'GU', 'MP', 'PR', 'VI'].indexOf(member.get('state')) > -1;
+    if (district && !notState) {
+      load(`${member.get('state')}-${district}`);
     }
   }
+
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.member.get('id') !== this.props.member.get('id')) {
+      const district = convertDistrict(nextProps.member.get('district'));
+      const notState = ['AS', 'DC', 'GU', 'MP', 'PR', 'VI'].indexOf(nextProps.member.get('state')) > -1;
+      if (district && !notState) {
+        return this.props.load(`${nextProps.member.get('state')}-${district}`)
+      }
+      return this.props.clearMapData();
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.clearMapData();
+  }
+
   render() {
-    const { member, lat, lng, zoom } = this.props;
-    const code = `${member.get('state')}-${member.get('district').toString()}`;
-    return lat ? (
+    const { member, lat, lng, zoom, isLoading } = this.props;
+    const district = convertDistrict(member.get('district'));
+    const code = `${member.get('state')}-${district}`;
+    const notState = ['AS', 'DC', 'GU', 'MP', 'PR', 'VI'].indexOf(member.get('state')) > -1;
+    return !isLoading || !district || notState ? (
       <div className="mem-mid">
         <div className="mem-mid-left">
           <CongressionalMap lat={lat} lng={lng} code={code} zoom={zoom} />
