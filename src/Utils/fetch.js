@@ -22,7 +22,7 @@ const fetchCongress = () => fetchCongressAPI().then(
 const fetchMapData = code => fetchMapDataAPI(code).then(
   resp => resp.json(),
   err => Promise.reject(err),
-).then(json => fromJS(json));
+).then(json => fromJS({ ...json, code }));
 
 export {
   fetchCongress,
