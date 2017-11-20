@@ -9,7 +9,12 @@ const clearMapData = () => ({
   type: 'CLEAR_MAP_DATA',
 });
 
+const hideMap = () => ({
+  type: 'HIDE_MAP',
+});
+
 export {
   getMemberMapData,
   clearMapData,
+  hideMap,
 };
