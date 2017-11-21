@@ -11,6 +11,14 @@
     box-shadow: 0px 0px 10px 2px;
 
     .mem-disp {
+      position: relative;
+
+      .header-links {
+        position: absolute;
+        right: 0;
+        text-align: center;
+      }
+
       .mem-top {
         text-align: center;
         font-size: 56px;

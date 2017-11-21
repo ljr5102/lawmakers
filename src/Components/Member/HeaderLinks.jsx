@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HeaderLinks = ({ previousId, nextId }) => (
-  <div>
+  <div className="header-links">
     <Link to="/dashboard">Go Back To Dashboard</Link>
     <div>
       <div>Toggle Congressmen</div>
