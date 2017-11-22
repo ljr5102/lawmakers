@@ -4,6 +4,7 @@ import HeaderLinks from './HeaderLinks';
 import MemberBio from './MemberBio';
 import Historical from './Historical';
 import Contact from './Contact';
+import Classification from './Classification';
 
 class MemberDisplay extends React.Component {
   componentWillMount() {
@@ -16,7 +17,8 @@ class MemberDisplay extends React.Component {
       <div className="mem-disp">
         <HeaderLinks nextId={nextId} previousId={previousId} />
         <div className="mem-top">
-          {member.get('name')}
+          <div className="name">{member.get('name')}</div>
+          <Classification member={member} />
         </div>
         <MemberBio member={member} />
         <Historical member={member} />

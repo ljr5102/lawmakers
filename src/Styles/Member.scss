@@ -20,10 +20,21 @@
       }
 
       .mem-top {
-        text-align: center;
-        font-size: 56px;
-        color: white;
         padding: 10px;
+
+        .name {
+          text-align: center;
+          font-size: 56px;
+          color: white;
+          width: 63%;
+          margin: auto;
+        }
+
+        .label {
+          text-align: center;
+          font-size: 22px;
+          color: white;
+        }
       }
 
       .mem-mid {
@@ -61,8 +72,10 @@
 
           img {
             border-radius: 5px;
-            width: 450;
-            height: 550;
+            width: 389;
+            height: 475;
+            // width: 450;
+            // height: 550;
           }
         }
       }
