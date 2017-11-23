@@ -25,9 +25,10 @@ class Biographical extends React.Component {
 
   render() {
     const { member, lat, lng, zoom, isLoading, shouldShowMap, code } = this.props;
+    const leftKlass = shouldShowMap ? 'mem-mid-left' : 'mem-mid-left hide'
     return !isLoading ? (
       <div className="mem-mid">
-        <div className="mem-mid-left">
+        <div className={leftKlass}>
           {shouldShowMap ? <CongressionalMap lat={lat} lng={lng} code={code} zoom={zoom} /> : null}
         </div>
         <div className="mem-mid-right">
