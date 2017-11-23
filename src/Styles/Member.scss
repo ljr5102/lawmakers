@@ -69,6 +69,29 @@
         .mem-mid-right {
           border: 1px solid white;
           border-radius: 5px;
+          position: relative;
+
+          .donkey {
+            width: 100px;
+            height: 98px;
+            background-image: url('../../assets/donkey.png');
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            border-bottom-right-radius: 3px;
+          }
+
+          .elephant {
+            width: 100px;
+            height: 87px;
+            background-image: url('../../assets/elephant.png');
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            border-bottom-right-radius: 3px;
+          }
 
           img {
             border-radius: 5px;
