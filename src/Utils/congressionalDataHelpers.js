@@ -16,11 +16,11 @@ const pickTermData = (congressman, data) => (
 
 const numToAbb = (num) => {
   const str = num.toString();
-  if (str[str.length - 1] === 1) {
+  if (str[str.length - 1] === '1') {
     return `${str}st`;
-  } else if (str[str.length - 1] === 2 && str[str.length - 2] !== 1) {
+  } else if (str[str.length - 1] === '2' && str[str.length - 2] !== '1') {
     return `${str}nd`;
-  } else if (str[str.length - 1] === 3 && str[str.length - 2] !== 1) {
+  } else if (str[str.length - 1] === '3' && str[str.length - 2] !== '1') {
     return `${str}rd`;
   }
   return `${str}th`;
