@@ -1,8 +1,13 @@
-import { fetchMapData } from '../Utils';
+import { fetchCongressionalMapData, fetchSenateMapData } from '../Utils';
 
-const getMemberMapData = code => ({
+const getMemberCongressionalMapData = code => ({
   type: 'GET_CONGRESSIONAL_MAP',
-  promise: fetchMapData(code),
+  promise: fetchCongressionalMapData(code),
+});
+
+const getMemberSenateMapData = state => ({
+  type: 'GET_SENATE_MAP',
+  promise: fetchSenateMapData(state),
 });
 
 const clearMapData = () => ({
@@ -14,7 +19,8 @@ const hideMap = () => ({
 });
 
 export {
-  getMemberMapData,
+  getMemberCongressionalMapData,
+  getMemberSenateMapData,
   clearMapData,
   hideMap,
 };

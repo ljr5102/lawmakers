@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Biographical from './Biographical';
-import { getMemberMapData, clearMapData, hideMap } from '../../Actions';
+import { getMemberCongressionalMapData, getMemberSenateMapData, clearMapData } from '../../Actions';
 
 const mapStateToProps = ({ congressionalMap }) => ({
   lng: congressionalMap.get('lng'),
@@ -9,6 +9,7 @@ const mapStateToProps = ({ congressionalMap }) => ({
   isLoading: congressionalMap.get('isLoading'),
   shouldShowMap: congressionalMap.get('shouldShowMap'),
   code: congressionalMap.get('code'),
+  state: congressionalMap.get('state'),
 });
 
 const convertDistrict = (dist) => {
@@ -22,18 +23,24 @@ const convertDistrict = (dist) => {
   return dist.toString();
 };
 
-const mapDispatchToProps = dispatch => ({
-  load: (member) => {
-    dispatch(clearMapData());
+const mapDispatchToProps = (dispatch) => {
+  const fetchCongressionalMap = (member) => {
     const district = convertDistrict(member.get('district'));
-    const notState = ['AS', 'DC', 'GU', 'MP', 'PR', 'VI'].indexOf(member.get('state')) > -1;
-    if (!district || notState) {
-      return dispatch(hideMap());
-    }
     const code = `${member.get('state')}-${district}`;
-    return dispatch(getMemberMapData(code));
-  },
-  clearMapData: () => dispatch(clearMapData()),
-});
+    return dispatch(getMemberCongressionalMapData(code));
+  }
+  const fetchSenateMap = (member) => {
+    return dispatch(getMemberSenateMapData(member.get('state')));
+  }
+  return {
+    load: (member) => {
+      dispatch(clearMapData());
+      const isSenator = member.get('chamber') === 'sen';
+      const notState = ['AS', 'DC', 'GU', 'MP', 'PR', 'VI'].indexOf(member.get('state')) > -1;
+      return isSenator || notState ? fetchSenateMap(member) : fetchCongressionalMap(member);
+    },
+    clearMapData: () => dispatch(clearMapData()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Biographical);

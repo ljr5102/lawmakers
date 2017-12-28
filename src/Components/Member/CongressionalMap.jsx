@@ -2,7 +2,18 @@ import React from 'react';
 
 class CongressionalMap extends React.Component {
   componentDidMount() {
-    const { lat, lng, zoom, code } = this.props;
+    const { lat, lng, zoom, code, state } = this.props;
+    const congressionalQuery = {
+      select: 'col4',
+      from: '1lnXJhKK1dX3dbzyq6S0gok4F44QpImPrqP4cd-Lk',
+      where: `col2 \x3d \x27${code}\x27`,
+    };
+    const senateQuery = {
+      select: 'col1',
+      from: '1VIlPVQuZyyUaT4j5X_KqGEmuZysxMaW2kshvLZ4V',
+      where: `col0 \x3d \x27${state}\x27`,
+    };
+    const query = code ? congressionalQuery : senateQuery;
     const isMobile = (navigator.userAgent.toLowerCase().indexOf('android') > -1) ||
       (navigator.userAgent.match(/(iPod|iPhone|iPad|BlackBerry|Windows Phone|iemobile)/));
     if (isMobile) {
@@ -24,11 +35,7 @@ class CongressionalMap extends React.Component {
     const layer = new google.maps.FusionTablesLayer({
       map,
       heatmap: { enabled: false },
-      query: {
-        select: 'col4',
-        from: '1lnXJhKK1dX3dbzyq6S0gok4F44QpImPrqP4cd-Lk',
-        where: `col2 \x3d \x27${code}\x27`,
-      },
+      query,
       options: {
         styleId: 2,
         templateId: 2,

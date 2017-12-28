@@ -9,6 +9,7 @@ const initialState = Map({
   lng: 0,
   zoom: 0,
   code: null,
+  state: null,
 });
 
 const APIHandling = {
@@ -37,11 +38,12 @@ const APIHandling = {
     console.log('longDiff: ', lngDiff)
     console.log('latDiff: ', latDiff)
     console.log('zoom: ', zoom)
-    const update = Map({ lat: cntrLat, lng: cntrLng, zoom: Math.round(zoom), code: payload.get('code'), shouldShowMap: true });
+    const update = Map({ lat: cntrLat, lng: cntrLng, zoom: Math.round(zoom), code: payload.get('code'), state: payload.get('state'), shouldShowMap: true });
     return state.merge(update);
     // max diff of 12 still about 6
     // maxx diff of 8 -> 6
     // max diff of 6 roughly zoom of 6
+    // max diff of 5.96, close to 6
     // max diff of 2 -> 7, maybe 8
     // max diff of 1.05 -> 8
     // max diff of 0.86 -> 9
@@ -57,6 +59,13 @@ const APIHandling = {
 const congressionalMap = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_CONGRESSIONAL_MAP':
+      return handle(state, action, {
+        start: prevState => APIHandling.onStart(prevState),
+        finish: prevState => APIHandling.onFinish(prevState),
+        failure: prevState => APIHandling.onFailure(prevState),
+        success: prevState => APIHandling.onSuccess(prevState, action),
+      });
+    case 'GET_SENATE_MAP':
       return handle(state, action, {
         start: prevState => APIHandling.onStart(prevState),
         finish: prevState => APIHandling.onFinish(prevState),
