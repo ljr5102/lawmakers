@@ -5,8 +5,14 @@ import { chunk } from '../../Utils';
 import CongressionalTile from './CongressionalTile';
 
 class CongressionalList extends React.Component {
+  filteredList() {
+    return this.props.congressmen.get('list').filter(member => (
+      member.get('name').toLowerCase().includes(this.props.filter.get('name'))
+    ));
+  }
+
   chunkMembers() {
-    const list = this.props.congressmen.get('list');
+    const list = this.filteredList()
     return chunk(list, 4);
   }
 
@@ -27,6 +33,7 @@ class CongressionalList extends React.Component {
 
 CongressionalList.propTypes = {
   congressmen: ImmutablePropTypes.map,
+  filter: ImmutablePropTypes.map.isRequired,
 };
 
 CongressionalList.defaultProps = {

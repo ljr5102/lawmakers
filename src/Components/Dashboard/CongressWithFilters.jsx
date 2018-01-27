@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Filters from '../Filters/index';
+import Filters from '../Filters';
 import ListedCongress from '../Congress/ListedCongress';
 import Spinner from '../Utility/Spinner';
 
