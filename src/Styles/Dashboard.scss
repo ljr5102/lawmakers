@@ -17,6 +17,8 @@
 
   .filter-group {
     padding: 20px 0px;
+    display: flex;
+    justify-content: space-evenly;
 
     .filter-search {
       font-size: 18px;
@@ -28,7 +30,7 @@
 
   .cl-group {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   .ct-group {
