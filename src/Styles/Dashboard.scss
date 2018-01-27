@@ -11,47 +11,61 @@
   }
 }
 
-.cl-group {
-  display: flex;
-  justify-content: space-evenly;
+.congress-with-filter-group {
   width: 95%;
   margin: auto;
-}
 
-.ct-group {
-  width: 229px;
-  margin-top: 10px;
-  border: 2px solid white;
-  box-sizing: border-box;
+  .filter-group {
+    padding: 20px 0px;
 
-  &:hover {
-    border-color: $active;
-    .ct-name {
-      border-color: $active;
+    .filter-search {
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 5px;
+      width: 300px;
     }
   }
 
-  img {
-    width: 225px;
-    height: 275px;
-    margin: auto;
-  }
-
-  .ct-name {
+  .cl-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 46px;
-    text-align: center;
-    color: white;
-    font-size: 18px;
-    border-top: 2px solid white;
+    justify-content: space-between;
+  }
+
+  .ct-group {
+    width: 229px;
+    margin-top: 10px;
+    border: 2px solid white;
     box-sizing: border-box;
-    &.republican {
-      background-color: $secondary-color;
+
+    &:hover {
+      border-color: $active;
+      .ct-name {
+        border-color: $active;
+      }
     }
-    &.democrat {
-      background-color: $base-color;
+
+    img {
+      width: 225px;
+      height: 275px;
+      margin: auto;
+    }
+
+    .ct-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 46px;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      border-top: 2px solid white;
+      box-sizing: border-box;
+      &.republican {
+        background-color: $secondary-color;
+      }
+      &.democrat {
+        background-color: $base-color;
+      }
     }
   }
 }
