@@ -1,11 +1,38 @@
 import { Map } from 'immutable';
+import { handle } from 'redux-pack';
 
 const initialState = Map({ name: '' });
+
+const APIHandling = {
+  onSuccess: (prevState, { payload }) => {
+    let state;
+    let district;
+    const senate = payload.get('offices').find(ofc => ofc.get('name') === 'United States Senate');
+    const house = payload.get('offices').find(ofc => ofc.get('name').includes('United States House of Representatives'));
+    if (senate) {
+      state = senate.get('divisionId').match(/\/state:\S+/)[0].replace(/\/state:/, '').toUpperCase();
+    }
+    if (house) {
+      district = parseInt(house.get('divisionId').match(/\/cd:\S+/)[0].replace(/\/cd:/, ''), 10);
+    }
+    const newState = prevState.merge(Map({ state, district }));
+    return newState;
+  },
+};
 
 const filter = (state = initialState, action) => {
   switch (action.type) {
     case 'UPDATE_FILTER':
       return state.merge(action.param);
+    case 'FETCH_STATE_DISTRICT_DATA':
+      return handle(state, action, {
+        start: prevState => prevState.set('isLoading', true),
+        finish: prevState => prevState.set('isLoading', false),
+        success: APIHandling.onSuccess,
+        failure: prevState => prevState.set('error', 'error!'),
+      });
+    case 'CLEAR_ADDRESS_FILTER':
+      return state.delete('state').delete('district');
     default:
       return state;
   }
