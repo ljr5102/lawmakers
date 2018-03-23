@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddressAutoComplete from './AddressAutoComplete';
 
 class Filters extends React.Component {
   constructor() {
@@ -24,6 +25,7 @@ class Filters extends React.Component {
           className="filter-search"
           placeholder="Search By Name"
         />
+        <AddressAutoComplete fetchAddressInfo={this.props.fetchAddressInfo} clearAddressFilter={this.props.clearAddressFilter} />
       </div>
     );
   }
