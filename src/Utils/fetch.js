@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 
 const congressAPILink = 'https://theunitedstates.io/congress-legislators/legislators-current.json';
 const fusionAPILink = 'https://www.googleapis.com/fusiontables/v2/';
+const civicAPILink = 'https://www.googleapis.com/civicinfo/v2/representatives/';
 
 const fetchCongressAPI = () => (
   fetch(congressAPILink, { method: 'GET', 'Content-Type': 'application/json' })
@@ -21,6 +22,13 @@ const fetchSenateMapDataAPI = (state) => {
   return fetch(fusionAPILink + param + googApiKey, { method: 'GET', 'Content-Type': 'application/json' });
 };
 
+const fetchAddressDataAPI = (place) => {
+  const { formatted_address } = place;
+  const address = `?address=${formatted_address}`;
+  const googApiKey = '&key=AIzaSyD8SMlcDgmqT3zUusiEpCZFKB4E0N9SiOk';
+  return fetch(civicAPILink + address + googApiKey, { method: 'GET', 'Content-Type': 'application/json' });
+};
+
 const fetchCongress = () => fetchCongressAPI().then(
   resp => resp.json(),
   err => Promise.reject(err),
@@ -36,8 +44,14 @@ const fetchSenateMapData = state => fetchSenateMapDataAPI(state).then(
   err => Promise.reject(err),
 ).then(json => fromJS({ ...json, state }));
 
+const fetchStateDistrictData = place => fetchAddressDataAPI(place).then(
+  resp => resp.json(),
+  err => Promise.reject(err),
+).then(json => fromJS(json));
+
 export {
   fetchCongress,
   fetchCongressionalMapData,
   fetchSenateMapData,
+  fetchStateDistrictData,
 };
