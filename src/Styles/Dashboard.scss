@@ -25,6 +25,25 @@
       padding: 10px;
       border-radius: 5px;
       width: 300px;
+
+      &.disabled {
+        background-color: #bdc3c7;
+        opacity: 0.7;
+      }
+    }
+
+    .cancel-filter {
+      position: absolute;
+      top: 8px;
+      right: 5px;
+      width: 25px;
+      height: 25px;
+      background: red;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
     }
   }
 
