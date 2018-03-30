@@ -14,8 +14,13 @@ const clearAddressFilter = () => ({
   type: 'CLEAR_ADDRESS_FILTER',
 });
 
+const clearFilters = () => ({
+  type: 'CLEAR_FILTERS',
+});
+
 export {
   updateFilter,
   fetchAddressAndFilter,
   clearAddressFilter,
+  clearFilters,
 };

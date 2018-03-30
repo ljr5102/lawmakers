@@ -15,6 +15,10 @@ class Filters extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.clearFilters()
+  }
+
   render() {
     return (
       <div className="filter-group">
