@@ -7,12 +7,7 @@ const Header = () => (
     <div className="h-left">
       <ActionableTab label="Dashboard" />
     </div>
-    <div className="h-right">
-      <ActionableTab label="Chamber" />
-      <ActionableTab label="States" />
-      <ActionableTab label="Party" />
-      <ActionableTab label="Committees" />
-    </div>
+    <div className="h-right" />
   </div>
 );
 
