@@ -14,6 +14,8 @@ const APIHandling = {
     }
     if (house) {
       district = parseInt(house.get('divisionId').match(/\/cd:\S+/)[0].replace(/\/cd:/, ''), 10);
+      // TODO: need to fix at large districts
+      // TODO: need to handle not finding a district for the address
     }
     const newState = prevState.merge(Map({ state, district }));
     return newState;
