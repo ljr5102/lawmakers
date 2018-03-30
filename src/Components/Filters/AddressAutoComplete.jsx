@@ -35,7 +35,7 @@ class AddressAutoComplete extends React.Component {
           type="text"
           name="address"
           id="searchTextField"
-          placeholder="Enter an address"
+          placeholder="Search By Address"
           className={`filter-search ${this.state.addressEntered ? 'disabled' : ''}`}
           disabled={this.state.addressEntered}
           value={this.state.address}
