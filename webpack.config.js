@@ -51,7 +51,7 @@ var config = {
       names: ['vendor', 'manifest'],
     }),
     new HtmlWebpackPlugin({
-      title: 'My App',
+      title: 'Lawmakers',
       filename: 'index.html',
       template: './src/index.html',
     }),
