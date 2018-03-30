@@ -11,11 +11,19 @@ const APIHandling = {
     const house = payload.get('offices').find(ofc => ofc.get('name').includes('United States House of Representatives'));
     if (senate) {
       state = senate.get('divisionId').match(/\/state:\S+/)[0].replace(/\/state:/, '').toUpperCase();
+    } else {
+      state = 'NOT FOUND';
     }
+
     if (house) {
-      district = parseInt(house.get('divisionId').match(/\/cd:\S+/)[0].replace(/\/cd:/, ''), 10);
-      // TODO: need to fix at large districts
-      // TODO: need to handle not finding a district for the address
+      const districtNum = house.get('divisionId').match(/\/cd:\S+/);
+      if (districtNum) {
+        district = parseInt(districtNum[0].replace(/\/cd:/, ''), 10);
+      } else {
+        district = 0; // at large district
+      }
+    } else {
+      district = 'NOT FOUND';
     }
     const newState = prevState.merge(Map({ state, district }));
     return newState;
