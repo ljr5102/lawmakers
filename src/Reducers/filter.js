@@ -7,23 +7,28 @@ const APIHandling = {
   onSuccess: (prevState, { payload }) => {
     let state;
     let district;
-    const senate = payload.get('offices').find(ofc => ofc.get('name') === 'United States Senate');
-    const house = payload.get('offices').find(ofc => ofc.get('name').includes('United States House of Representatives'));
-    if (senate) {
-      state = senate.get('divisionId').match(/\/state:\S+/)[0].replace(/\/state:/, '').toUpperCase();
-    } else {
+    if (payload.get('error')) {
       state = 'NOT FOUND';
-    }
-
-    if (house) {
-      const districtNum = house.get('divisionId').match(/\/cd:\S+/);
-      if (districtNum) {
-        district = parseInt(districtNum[0].replace(/\/cd:/, ''), 10);
-      } else {
-        district = 0; // at large district
-      }
-    } else {
       district = 'NOT FOUND';
+    } else {
+      const senate = payload.get('offices').find(ofc => ofc.get('name') === 'United States Senate');
+      const house = payload.get('offices').find(ofc => ofc.get('name').includes('United States House of Representatives'));
+      if (senate) {
+        state = senate.get('divisionId').match(/\/state:\S+/)[0].replace(/\/state:/, '').toUpperCase();
+      } else {
+        state = 'NOT FOUND';
+      }
+
+      if (house) {
+        const districtNum = house.get('divisionId').match(/\/cd:\S+/);
+        if (districtNum) {
+          district = parseInt(districtNum[0].replace(/\/cd:/, ''), 10);
+        } else {
+          district = 0; // at large district
+        }
+      } else {
+        district = 'NOT FOUND';
+      }
     }
     const newState = prevState.merge(Map({ state, district }));
     return newState;
@@ -43,6 +48,8 @@ const filter = (state = initialState, action) => {
       });
     case 'CLEAR_ADDRESS_FILTER':
       return state.delete('state').delete('district');
+    case 'CLEAR_FILTERS':
+      return initialState;
     default:
       return state;
   }
