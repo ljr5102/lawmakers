@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Filters from '../Filters';
 import ListedCongress from '../Congress/ListedCongress';
 import Spinner from '../Utility/Spinner';
+import Errors from '../Errors';
 
 class CongressWithFilters extends React.Component {
   constructor() {
@@ -20,6 +21,7 @@ class CongressWithFilters extends React.Component {
     ) : (
       <div className="congress-with-filter-group">
         <Filters />
+        <Errors />
         <ListedCongress />
       </div>
     );
