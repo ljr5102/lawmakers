@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AddressAutoComplete extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = { addressEntered: false, address: '' };
 
     this.clearAddressFilter = this.clearAddressFilter.bind(this);
@@ -17,7 +17,6 @@ class AddressAutoComplete extends React.Component {
       this.setState({ addressEntered: true, address: address.formatted_address });
       this.props.fetchAddressInfo(address);
     })
-    window.autoComplete = this.autoComplete
   }
 
   clearAddressFilter() {
