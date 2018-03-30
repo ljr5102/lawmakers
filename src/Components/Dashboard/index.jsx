@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header/index';
-import ListedCongressWithFilters from './ListedCongressWithFilters.js';
+import ListedCongressWithFilters from './ListedCongressWithFilters';
 import '../../Styles/Dashboard.scss';
 
 const Dashboard = () => (
