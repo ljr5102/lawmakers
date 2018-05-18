@@ -7,7 +7,6 @@ import CongressionalTile from './CongressionalTile';
 class CongressionalList extends React.Component {
   filteredList() {
     let filtered = this.props.congressmen.get('list');
-    console.log(this.props.filter);
     if (this.props.filter.get('state')) {
       filtered = filtered.filter(mbr => mbr.get('state') === this.props.filter.get('state'));
     }

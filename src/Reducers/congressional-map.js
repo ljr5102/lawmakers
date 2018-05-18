@@ -35,9 +35,6 @@ const APIHandling = {
     const maxDiff = lngDiff > latDiff ? lngDiff : latDiff;
     // const zoom = 4.21144 + (10.7153 / ((1.66413 * (maxDiff ** 0.58058)) + 1))
     const zoom = -472.497 + (491.003 / ((0.0211047 * (maxDiff ** 0.168236)) + 1))
-    console.log('longDiff: ', lngDiff)
-    console.log('latDiff: ', latDiff)
-    console.log('zoom: ', zoom)
     const update = Map({ lat: cntrLat, lng: cntrLng, zoom: Math.round(zoom), code: payload.get('code'), state: payload.get('state'), shouldShowMap: true });
     return state.merge(update);
     // max diff of 12 still about 6
