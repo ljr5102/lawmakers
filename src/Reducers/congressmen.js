@@ -10,7 +10,7 @@ const APIHandling = {
   onFailure: state => state.set('error', 'error!'),
   onSuccess: (state, { payload }) => (state.set('list', payload.map(cong => Map({
     id: pickIdData(cong, 'bioguide'),
-    name: pickNameData(cong, 'official_full'),
+    name: pickNameData(cong, 'official_full') || pickNameData(cong, 'first') + ' ' + pickNameData(cong, 'last'),
     last_name: pickNameData(cong, 'last'),
     birthday: pickBioData(cong, 'birthday'),
     religion: pickBioData(cong, 'religion'),
