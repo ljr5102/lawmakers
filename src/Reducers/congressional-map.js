@@ -10,6 +10,7 @@ const initialState = Map({
   zoom: 0,
   code: null,
   state: null,
+  geoJson: null,
 });
 
 const APIHandling = {
