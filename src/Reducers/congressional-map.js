@@ -65,7 +65,8 @@ const APIHandlingNew = {
         // unsure if this is the correct check
         geometry = payload.get('geometry').get('coordinates').get(0);
       } else if (payload.get('geometry').get('type') === 'MultiPolygon') {
-        geometry = payload.get('geometry').get('coordinates').get(0).get(0);
+        // geometry = payload.get('geometry').get('coordinates').get(0).get(0);
+        geometry = payload.get('geometry').get('coordinates').flatten(2);
       }
     } else if (payload.get('geometries')) {
       geometry = payload.get('geometries').flatMap(el => el.get('coordinates')).flatten(1);
