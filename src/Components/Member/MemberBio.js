@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Biographical from './Biographical';
-import { getMemberCongressionalMapData, getMemberSenateMapData, clearMapData } from '../../Actions';
+import { getMemberCongressionalMapData, getMemberSenateMapData, clearMapData, getMemberCongressionalMapDataNew, getMemberSenateMapDataNew } from '../../Actions';
 
 const mapStateToProps = ({ congressionalMap }) => ({
   lng: congressionalMap.get('lng'),
@@ -10,6 +10,7 @@ const mapStateToProps = ({ congressionalMap }) => ({
   shouldShowMap: congressionalMap.get('shouldShowMap'),
   code: congressionalMap.get('code'),
   state: congressionalMap.get('state'),
+  geoJson: congressionalMap.get('geoJson'),
 });
 
 const convertDistrict = (dist) => {
@@ -24,13 +25,27 @@ const convertDistrict = (dist) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+  const useUpgradedMap = true;
   const fetchCongressionalMap = (member) => {
-    const district = convertDistrict(member.get('district'));
+    let district;
+    if (useUpgradedMap) {
+      district = member.get('district');
+    } else {
+      district = convertDistrict(member.get('district'));
+    }
     const code = `${member.get('state')}-${district}`;
-    return dispatch(getMemberCongressionalMapData(code));
+    if (useUpgradedMap) {
+      return dispatch(getMemberCongressionalMapDataNew(code));
+    } else {
+      return dispatch(getMemberCongressionalMapData(code));
+    }
   }
   const fetchSenateMap = (member) => {
-    return dispatch(getMemberSenateMapData(member.get('state')));
+    if (useUpgradedMap) {
+      return dispatch(getMemberSenateMapDataNew(member.get('state')));
+    } else {
+      return dispatch(getMemberSenateMapData(member.get('state')));
+    }
   }
   return {
     load: (member) => {

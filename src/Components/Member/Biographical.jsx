@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map } from 'immutable';
 import CongressionalMap from './CongressionalMap';
+import CongressionalMapNew from './CongressionalMapNew';
 
 const partyToImage = Map({
   Republican: 'elephant',
@@ -29,12 +30,19 @@ class Biographical extends React.Component {
   }
 
   render() {
-    const { member, lat, lng, zoom, isLoading, shouldShowMap, code, state } = this.props;
+    const { member, lat, lng, zoom, isLoading, shouldShowMap, code, state, geoJson } = this.props;
     const leftKlass = shouldShowMap ? 'mem-mid-left' : 'mem-mid-left hide'
+    const useUpgradedMap = true;
     return !isLoading ? (
       <div className="mem-mid">
         <div className={leftKlass}>
-          {shouldShowMap ? <CongressionalMap lat={lat} lng={lng} code={code} state={state} zoom={zoom} /> : null}
+          {shouldShowMap ? (
+            useUpgradedMap ? (
+              <CongressionalMapNew lat={lat} lng={lng} zoom={zoom} geoJson={geoJson} color={colors.get(member.get('party'))} />
+            ) : (
+              <CongressionalMap lat={lat} lng={lng} code={code} state={state} zoom={zoom} />
+            )
+          ) : null}
         </div>
         <div className="mem-mid-right">
           <div className={partyToImage.get(member.get('party'))} />
