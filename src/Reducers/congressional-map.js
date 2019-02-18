@@ -54,6 +54,53 @@ const APIHandling = {
   },
 };
 
+const APIHandlingNew = {
+  onStart: state => state.set('isLoading', true),
+  onFinish: state => state.set('isLoading', false),
+  onFailure: state => state.set('error', 'error!'),
+  onSuccess: (state, { payload }) => {
+    let geometry;
+    if (payload.get('geometry')) {
+      if (payload.get('geometry').get('type') === 'Polygon') {
+        // unsure if this is the correct check
+        geometry = payload.get('geometry').get('coordinates').get(0);
+      } else if (payload.get('geometry').get('type') === 'MultiPolygon') {
+        geometry = payload.get('geometry').get('coordinates').get(0).get(0);
+      }
+    } else if (payload.get('geometries')) {
+      geometry = payload.get('geometries').flatMap(el => el.get('coordinates')).flatten(1);
+    } else {
+      geometry = payload.get('coordinates').get(0).get(0);
+    }
+    const maxLng = geometry.maxBy(el => el.get(0)).get(0);
+    const minLng = geometry.minBy(el => el.get(0)).get(0);
+    const maxLat = geometry.maxBy(el => el.get(1)).get(1);
+    const minLat = geometry.minBy(el => el.get(1)).get(1);
+    const lngDiff = maxLng - minLng;
+    const latDiff = maxLat - minLat;
+    const cntrLng = minLng + (lngDiff / 2);
+    const cntrLat = minLat + (latDiff / 2);
+    const maxDiff = lngDiff > latDiff ? lngDiff : latDiff;
+    // const zoom = 4.21144 + (10.7153 / ((1.66413 * (maxDiff ** 0.58058)) + 1))
+    const zoom = -472.497 + (491.003 / ((0.0211047 * (maxDiff ** 0.168236)) + 1))
+    const update = Map({ lat: cntrLat, lng: cntrLng, zoom: Math.round(zoom), code: payload.get('code'), state: payload.get('state'), shouldShowMap: true, geoJson: payload.toJSON() });
+    return state.merge(update);
+    // max diff of 12 still about 6
+    // maxx diff of 8 -> 6
+    // max diff of 6 roughly zoom of 6
+    // max diff of 5.96, close to 6
+    // max diff of 2 -> 7, maybe 8
+    // max diff of 1.05 -> 8
+    // max diff of 0.86 -> 9
+    // max diff of 0.8 about 9
+    // max diff of 0.37 -> 10
+    // max diff of 0.34 -> 10
+    // max diff of 0.2 10, closer to 11?
+    // max diff of 0.17 -> 11
+    // max diff of 0.09, 12
+  },
+};
+
 const congressionalMap = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_CONGRESSIONAL_MAP':
@@ -63,12 +110,26 @@ const congressionalMap = (state = initialState, action) => {
         failure: prevState => APIHandling.onFailure(prevState),
         success: prevState => APIHandling.onSuccess(prevState, action),
       });
+    case 'GET_CONGRESSIONAL_MAP_NEW':
+      return handle(state, action, {
+        start: prevState => APIHandlingNew.onStart(prevState),
+        finish: prevState => APIHandlingNew.onFinish(prevState),
+        failure: prevState => APIHandlingNew.onFailure(prevState),
+        success: prevState => APIHandlingNew.onSuccess(prevState, action),
+      });
     case 'GET_SENATE_MAP':
       return handle(state, action, {
         start: prevState => APIHandling.onStart(prevState),
         finish: prevState => APIHandling.onFinish(prevState),
         failure: prevState => APIHandling.onFailure(prevState),
         success: prevState => APIHandling.onSuccess(prevState, action),
+      });
+    case 'GET_SENATE_MAP_NEW':
+      return handle(state, action, {
+        start: prevState => APIHandlingNew.onStart(prevState),
+        finish: prevState => APIHandlingNew.onFinish(prevState),
+        failure: prevState => APIHandlingNew.onFailure(prevState),
+        success: prevState => APIHandlingNew.onSuccess(prevState, action),
       });
     case 'CLEAR_MAP_DATA':
       return initialState;
