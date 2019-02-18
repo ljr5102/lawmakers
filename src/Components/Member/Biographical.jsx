@@ -7,6 +7,11 @@ const partyToImage = Map({
   Democrat: 'donkey',
 });
 
+const colors = Map({
+  Democrat: '#0560d2',
+  Republican: '#bf0900',
+});
+
 class Biographical extends React.Component {
   componentWillMount() {
     const { member, load } = this.props;
