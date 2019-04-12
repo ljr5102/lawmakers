@@ -71,7 +71,8 @@ const APIHandlingNew = {
     } else if (payload.get('geometries')) {
       geometry = payload.get('geometries').flatMap(el => el.get('coordinates')).flatten(1);
     } else {
-      geometry = payload.get('coordinates').get(0).get(0);
+      // geometry = payload.get('coordinates').get(0).get(0);
+      geometry = payload.get('coordinates').flatten(2);
     }
     const maxLng = geometry.maxBy(el => el.get(0)).get(0);
     const minLng = geometry.minBy(el => el.get(0)).get(0);
