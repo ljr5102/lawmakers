@@ -6,7 +6,7 @@ class CongressionalMapNew extends React.Component {
   }
 
   addMap() {
-    const mapboxAccessToken = 'pk.eyJ1IjoibGpyNTEwMiIsImEiOiJjanNhaHY4aWIwM3hwNDlxYzg1emg4YWF3In0.R8v5Qm_es5sQ7MdpYvP3hw';
+    const mapboxAccessToken = 'pk.eyJ1IjoibGpyNTEwMiIsImEiOiJjanNhaHhybjcxZ3dzNDlxY25pbmtvaGRjIn0.NARlOWu0ZLhPNtosCnItYQ';
     const  { lat, lng, zoom, geoJson, color } = this.props
     const mymap = L.map('leaflet-map').setView(L.latLng(lat, lng), zoom);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
