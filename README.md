@@ -5,6 +5,8 @@ Legislators is an app that pulls and displays information for all the current me
 ## Screenshots
 ![dashboard](/assets/dashboard.png)
 
+![member](/assets/member.png)
+
 ## Tech
 <b>Built with</b>
 - [React](https://reactjs.org/)
