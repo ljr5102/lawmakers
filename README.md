@@ -12,8 +12,9 @@ Legislators is an app that pulls and displays information for all the current me
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Immutable.js](https://immutable-js.github.io/immutable-js/)
+- [Leaflet](https://leafletjs.com/)
 
-The app also uses the Google Maps, Google Civic Information, and Google Fusion Tables API's.
+The app also uses the Google Places, Google Civic Information, and Mapbox API's.
 
 ## TODO
 - [ ] Display default images for members who do not have a photo
