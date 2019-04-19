@@ -10,28 +10,18 @@ const mapStateToProps = ({ congressionalMap }) => ({
   shouldShowMap: congressionalMap.get('shouldShowMap'),
   code: congressionalMap.get('code'),
   state: congressionalMap.get('state'),
+  geoJson: congressionalMap.get('geoJson'),
 });
-
-const convertDistrict = (dist) => {
-  if (dist === undefined) {
-    return null;
-  } else if (dist === 0) {
-    return 'AL';
-  } else if (dist.toString().length < 2) {
-    return `0${dist}`;
-  }
-  return dist.toString();
-};
 
 const mapDispatchToProps = (dispatch) => {
   const fetchCongressionalMap = (member) => {
-    const district = convertDistrict(member.get('district'));
+    const district = member.get('district');
     const code = `${member.get('state')}-${district}`;
     return dispatch(getMemberCongressionalMapData(code));
-  }
+  };
   const fetchSenateMap = (member) => {
     return dispatch(getMemberSenateMapData(member.get('state')));
-  }
+  };
   return {
     load: (member) => {
       dispatch(clearMapData());
