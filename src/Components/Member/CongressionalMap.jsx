@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CongressionalMapNew extends React.Component {
+class CongressionalMap extends React.Component {
   componentDidMount() {
     this.addMap();
   }
@@ -28,4 +28,4 @@ class CongressionalMapNew extends React.Component {
   }
 }
 
-export default CongressionalMapNew;
+export default CongressionalMap;
