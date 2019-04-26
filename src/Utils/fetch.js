@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import 'whatwg-fetch';
 
 const congressAPILink = 'https://theunitedstates.io/congress-legislators/legislators-current.json';
 const civicAPILink = 'https://www.googleapis.com/civicinfo/v2/representatives/';
