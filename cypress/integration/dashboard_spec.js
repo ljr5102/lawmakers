@@ -1,7 +1,3 @@
-Cypress.on('window:before:load', (win) => {
-  delete win.fetch
-});
-
 describe('Dashboard', () => {
   it('successfully loads', () => {
     cy.server();
