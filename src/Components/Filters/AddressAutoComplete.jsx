@@ -11,7 +11,7 @@ class AddressAutoComplete extends React.Component {
   }
 
   componentDidMount() {
-    this.autoComplete = new google.maps.places.Autocomplete(document.getElementById("searchTextField"), { componentRestrictions: { country: 'us' } });
+    this.autoComplete = new google.maps.places.Autocomplete(document.getElementById("address-search"), { componentRestrictions: { country: 'us' } });
     this.autoComplete.addListener('place_changed', () => {
       const address = this.autoComplete.getPlace();
       this.setState({ addressEntered: true, address: address.formatted_address });
@@ -34,7 +34,7 @@ class AddressAutoComplete extends React.Component {
         <input
           type="text"
           name="address"
-          id="searchTextField"
+          id="address-search"
           placeholder="Search By Address"
           className={`filter-search ${this.state.addressEntered ? 'disabled' : ''}`}
           disabled={this.state.addressEntered}
