@@ -26,6 +26,7 @@ class Filters extends React.Component {
           onChange={this.updateFilter}
           type="text"
           name="name"
+          id="name-search"
           className="filter-search"
           placeholder="Search By Name"
         />
