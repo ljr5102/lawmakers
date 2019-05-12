@@ -70,6 +70,17 @@
       }
     }
 
+    .faux-image {
+      width: 225px;
+      height: 275px;
+      margin: auto;
+      background-image: url('/assets/house_seal.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: white;
+    }
+
     img {
       width: 225px;
       height: 275px;
