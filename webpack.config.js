@@ -51,7 +51,7 @@ var config = {
       names: ['vendor', 'manifest'],
     }),
     new HtmlWebpackPlugin({
-      title: 'Lawmakers',
+      title: 'Legislators',
       filename: 'index.html',
       template: './src/index.html',
     }),
