@@ -24,7 +24,7 @@ class CongressionalImage extends React.Component {
     const { memberId } = this.props;
     const src = this.state.imageSources[this.state.imgSrcIndex];
     return this.state.imgSrcIndex >= this.state.imageSources.length ? (
-      <div className="faux-image" />
+      <div className="faux-image" style={{ backgroundImage: "url('/assets/house_seal.png')" }} />
     ) : (
       <img id={`${memberId}-img`} alt="text" onError={this.handleError} src={src} />
     );
