@@ -5,8 +5,6 @@ import CongressionalImage from './CongressionalImage';
 
 const CongressionalTile = ({ person }) => {
   const klass = `ct-name ${person.get('party').toLowerCase()}`;
-  // Fallback photo source? Does not include all members and some photos are not right aspect ratio.
-  // <img alt="text" src={`http://bioguide.congress.gov/bioguide/photo/A/${person.get('id')}.jpg`} />
   return (
     <Link to={`/member/${person.get('id')}`}>
       <div className="ct-group">
