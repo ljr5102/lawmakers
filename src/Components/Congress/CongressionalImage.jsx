@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CongressionalImage extends React.Component {
   constructor(props) {
@@ -30,5 +31,9 @@ class CongressionalImage extends React.Component {
     );
   }
 }
+
+CongressionalImage.propTypes = {
+  memberId: PropTypes.string.isRequired,
+};
 
 export default CongressionalImage;
