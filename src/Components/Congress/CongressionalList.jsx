@@ -19,7 +19,7 @@ class CongressionalList extends React.Component {
   }
 
   chunkMembers() {
-    const list = this.filteredList()
+    const list = this.filteredList();
     return chunk(list, 4);
   }
 
