@@ -14,7 +14,7 @@ class CongressionalList extends React.Component {
       filtered = filtered.filter(mbr => mbr.get('chamber') === 'sen' || mbr.get('district') === this.props.filter.get('district'));
     }
     return filtered.filter(member => (
-      member.get('name').toLowerCase().includes(this.props.filter.get('name'))
+      member.get('name').toLowerCase().includes(this.props.filter.get('name')) // TODO: think the filter needs lower cased?
     ));
   }
 
