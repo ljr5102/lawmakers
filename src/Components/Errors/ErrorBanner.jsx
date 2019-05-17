@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function ErrorBanner({ state, district }) {
   return (
@@ -20,3 +21,8 @@ export default function ErrorBanner({ state, district }) {
     </ul>
   );
 }
+
+ErrorBanner.propTypes = {
+  state: PropTypes.bool.isRequired,
+  district: PropTypes.bool.isRequired,
+};
