@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map } from 'immutable';
 import CongressionalMap from './CongressionalMap';
+import CongressionalImage from '../Congress/CongressionalImage';
 
 const partyToImage = Map({
   Republican: 'elephant',
@@ -40,7 +41,7 @@ class Biographical extends React.Component {
         </div>
         <div className="mem-mid-right">
           <div className={partyToImage.get(member.get('party'))} />
-          <img alt="text" src={`https://theunitedstates.io/images/congress/450x550/${member.get('id')}.jpg`} />
+          <CongressionalImage memberId={member.get('id')} size="450x550" />
         </div>
       </div>
     ) : null;

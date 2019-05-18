@@ -7,7 +7,7 @@ class CongressionalImage extends React.Component {
 
     this.state = {
       imageSources: [
-        `https://theunitedstates.io/images/congress/225x275/${props.memberId}.jpg`,
+        `https://theunitedstates.io/images/congress/${props.size}/${props.memberId}.jpg`,
         `http://bioguide.congress.gov/bioguide/photo/${props.memberId[0]}/${props.memberId}.jpg`,
       ],
       imgSrcIndex: 0,
