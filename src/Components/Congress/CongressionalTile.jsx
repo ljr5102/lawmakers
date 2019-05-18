@@ -8,7 +8,7 @@ const CongressionalTile = ({ person }) => {
   return (
     <Link to={`/member/${person.get('id')}`}>
       <div className="ct-group">
-        <CongressionalImage memberId={person.get('id')} size="225x275" />
+        <CongressionalImage memberId={person.get('id')} chamber={person.get('chamber')} size="225x275" />
         <div className={klass}>{person.get('name')}</div>
       </div>
     </Link>

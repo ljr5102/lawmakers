@@ -41,7 +41,7 @@ class Biographical extends React.Component {
         </div>
         <div className="mem-mid-right">
           <div className={partyToImage.get(member.get('party'))} />
-          <CongressionalImage memberId={member.get('id')} size="450x550" />
+          <CongressionalImage memberId={member.get('id')} chamber={member.get('chamber')} size="450x550" />
         </div>
       </div>
     ) : null;
