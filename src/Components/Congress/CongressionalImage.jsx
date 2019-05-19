@@ -22,15 +22,17 @@ class CongressionalImage extends React.Component {
   }
 
   handleError() {
-    if (this.state.imgSrcIndex < this.state.imageSources.length) {
-      this.setState({ imgSrcIndex: this.state.imgSrcIndex + 1 });
+    const { imgSrcIndex, imageSources } = this.state;
+    if (imgSrcIndex < imageSources.length) {
+      this.setState({ imgSrcIndex: imgSrcIndex + 1 });
     }
   }
 
   render() {
     const { memberId, chamber } = this.props;
-    const src = this.state.imageSources[this.state.imgSrcIndex];
-    return this.state.imgSrcIndex >= this.state.imageSources.length ? (
+    const { imageSources, imgSrcIndex } = this.state;
+    const src = imageSources[imgSrcIndex];
+    return imgSrcIndex >= imageSources.length ? (
       <div className="faux-image" style={{ backgroundImage: chamberToDefaultImage[chamber] }} />
     ) : (
       <img id={`${memberId}-img`} alt="text" onError={this.handleError} src={src} />
