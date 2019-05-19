@@ -17,7 +17,7 @@ Legislators is an app that pulls and displays information for all the current me
 The app also uses the Google Places, Google Civic Information, and Mapbox API's.
 
 ## TODO
-- [ ] Display default images for members who do not have a photo
+- [x] Display default images for members who do not have a photo
 - [ ] Display congressional districts properly for members of at large districts
 - [x] Transition away from Google Fusion Tables API as it will be deprecated by the end of 2019
 - [ ] Add Cook Political Report data for each district
