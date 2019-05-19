@@ -1,10 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 var VENDOR_LIBS = ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'immutable', 'prop-types', 'redux-pack'];
-var extractSass = new ExtractTextPlugin({
+var extractSass = new MiniCssExtractPlugin({
   filename: '[name][chunkhash].css',
 });
 
@@ -25,14 +25,11 @@ var config = {
         test: /\.jsx?$/,
       },
       {
-        use: extractSass.extract({
-          use: [{
-            loader: 'css-loader',
-          }, {
-            loader: 'sass-loader',
-          }],
-          fallback: 'style-loader',
-        }),
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
         test: /\.scss$/,
       },
       {
@@ -47,9 +44,6 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
-    }),
     new HtmlWebpackPlugin({
       title: 'Legislators',
       filename: 'index.html',
