@@ -1,6 +1,6 @@
 # Legislators
 
-Legislators is an app that pulls and displays information for all the current members of the United State Congress.
+Legislators is an app that pulls and displays information for all the current members of the United State Congress. View it live [here](http://www.legislators.xyz).
 
 ## Screenshots
 ![dashboard](/assets/dashboard.png)
