@@ -103,6 +103,14 @@
           }
 
           .faux-image {
+            &.rep {
+              background-image: url('../../assets/house_seal.png');
+            }
+
+            &.sen {
+              background-image: url('../../assets/senate_seal.png');
+            }
+
             border-radius: 5px;
             width: 389px;
             height: 475px;
