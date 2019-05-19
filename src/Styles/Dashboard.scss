@@ -70,6 +70,16 @@
       }
     }
 
+    .faux-image {
+      width: 225px;
+      height: 275px;
+      margin: auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: white;
+    }
+
     img {
       width: 225px;
       height: 275px;
