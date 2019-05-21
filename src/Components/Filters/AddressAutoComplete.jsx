@@ -16,7 +16,7 @@ class AddressAutoComplete extends React.Component {
       const address = this.autoComplete.getPlace();
       this.setState({ addressEntered: true, address: address.formatted_address });
       this.props.fetchAddressInfo(address);
-    })
+    });
   }
 
   clearAddressFilter() {
@@ -50,5 +50,10 @@ class AddressAutoComplete extends React.Component {
     );
   }
 }
+
+AddressAutoComplete.propTypes = {
+  fetchAddressInfo: PropTypes.func.isRequired,
+  clearAddressFilter: PropTypes.func.isRequired,
+};
 
 export default AddressAutoComplete;
