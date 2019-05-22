@@ -9,14 +9,14 @@ class Filters extends React.Component {
     this.updateFilter = this.updateFilter.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearFilters()
+  }
+
   updateFilter(e) {
     this.props.updateFilter({
       [e.target.name]: e.target.value,
     });
-  }
-
-  componentWillUnmount() {
-    this.props.clearFilters()
   }
 
   render() {
