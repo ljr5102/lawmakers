@@ -10,7 +10,7 @@ class Filters extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearFilters()
+    this.props.clearFilters();
   }
 
   updateFilter(e) {
@@ -38,6 +38,8 @@ class Filters extends React.Component {
 
 Filters.propTypes = {
   updateFilter: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired,
+  fetchAddressInfo: PropTypes.func.isRequired,
 };
 
 export default Filters;
