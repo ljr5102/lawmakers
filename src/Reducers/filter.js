@@ -11,8 +11,8 @@ const APIHandling = {
       state = 'NOT FOUND';
       district = 'NOT FOUND';
     } else {
-      const senate = payload.get('offices').find(ofc => ofc.get('name') === 'United States Senate');
-      const house = payload.get('offices').find(ofc => ofc.get('name').includes('United States House of Representatives'));
+      const senate = payload.get('offices').find(ofc => ofc.get('name') === 'U.S. Senator');
+      const house = payload.get('offices').find(ofc => ofc.get('name').includes('U.S. Representative'));
       if (senate) {
         state = senate.get('divisionId').match(/\/state:\S+/)[0].replace(/\/state:/, '').toUpperCase();
       } else {
